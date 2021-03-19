@@ -36,7 +36,7 @@ class DriverBase(object):
             self.driver = webdriver.Ie(options=chrome_options)
         else:
             self.driver = webdriver.Chrome(options=chrome_options)
-        LOGGER.debug(f'加载浏览器驱动：{driver}')
+        LOGGER.info(f'加载浏览器驱动：{driver}')
 
         self.waiting = WebDriverWait(self.driver, 30)  # 设置显示等待30秒
         self.driver.implicitly_wait(30)  # 设置隐示等待30秒
@@ -53,7 +53,7 @@ class DriverBase(object):
         error_info = None
         for times in range(retries + 1):
             try:
-                LOGGER.debug(f'定位元素：{locator}')
+                LOGGER.info(f'定位元素：{locator}')
                 if condition == 'visibility':  # 等待节点可见
                     node = self.waiting.until(EC.visibility_of_element_located(locator))
                 else:  # 等待节点加载出来
@@ -80,11 +80,11 @@ class DriverBase(object):
         node = self.find_element(locator)
         node.clear()  # 清空文本
         node.send_keys(value)  # 输入值
-        LOGGER.debug(f'输入值：{value}')
+        LOGGER.info(f'输入值：{value}')
 
         if directly_enter:
             node.send_keys(Keys.ENTER)  # 回车
-            LOGGER.debug('执行回车')
+            LOGGER.info('执行回车')
 
     @staticmethod
     def get_node_detail_info(node):
@@ -114,17 +114,17 @@ class DriverBase(object):
     def back(self):
         """网页后退"""
         self.driver.back()
-        LOGGER.debug('网页后退')
+        LOGGER.info('网页后退')
 
     def forward(self):
         """网页前进"""
         self.driver.forward()
-        LOGGER.debug('网页前进')
+        LOGGER.info('网页前进')
 
     def refresh(self):
         """网页刷新"""
         self.driver.refresh()
-        LOGGER.debug('网页刷新')
+        LOGGER.info('网页刷新')
 
     def get_page_cookies(self, name=None):
         """
@@ -143,12 +143,12 @@ class DriverBase(object):
         :return:
         """
         self.driver.add_cookie(cookies)
-        LOGGER.debug(f'添加cookies：{cookies}')
+        LOGGER.info(f'添加cookies：{cookies}')
 
     def delete_cookies(self):
         """删除当前页面所有的cookies"""
         self.driver.delete_all_cookies()
-        LOGGER.debug(f'删除所有cookies')
+        LOGGER.info(f'删除所有cookies')
 
     def switch_to_windows(self, to_parent_windows=False):
         """
@@ -164,7 +164,7 @@ class DriverBase(object):
             for window in total:
                 if window != current_windows:
                     self.driver.switch_to.window(window)
-        LOGGER.debug(f'切换windows窗口')
+        LOGGER.info(f'切换windows窗口')
 
     def switch_to_frame(self, index=0, to_parent_frame=False, to_default_frame=False):
         """
@@ -180,7 +180,16 @@ class DriverBase(object):
             self.driver.switch_to.default_content()
         else:
             self.driver.switch_to.frame(index)
-        LOGGER.debug(f'切换frame，to：{index}')
+        LOGGER.info(f'切换frame，to：{index}')
+
+    def open_windows(self, url=''):
+        """
+        请求URL，打开windows窗口
+        :param url:
+        :return:
+        """
+        self.driver.get(url)
+        LOGGER.info(f'打开网址：{url}')
 
     def open_new_windows(self, url=''):
         """
@@ -189,7 +198,7 @@ class DriverBase(object):
         :return:
         """
         js = "window.open({})".format(url)
-        LOGGER.debug(f'打开新网址：{url}')
+        LOGGER.info(f'打开新网址：{url}')
         self.driver.execute_script(js)
         time.sleep(2)
 
@@ -206,7 +215,7 @@ class DriverBase(object):
         else:
             js = "window.scrollBy({}, {})".format(rolling_distance[0], rolling_distance[1])
         self.driver.execute_script(js)
-        LOGGER.debug(f'页面滚动完毕')
+        LOGGER.info(f'页面滚动完毕')
 
     def screen_shot(self, picture_path='./picture.jpg'):
         """
@@ -215,7 +224,7 @@ class DriverBase(object):
         :return:
         """
         self.driver.save_screenshot(picture_path)
-        LOGGER.debug(f'截取当前页面，图片路径：{picture_path}')
+        LOGGER.info(f'截取当前页面，图片路径：{picture_path}')
 
     def action_chain(self, source, target):
         """
@@ -232,19 +241,16 @@ class DriverBase(object):
         """
         self.actions.drag_and_drop(source, target)
         self.actions.perform()
-        LOGGER.debug(f'执行鼠标拖曳，拖曳前位置：{source}，拖曳后位置：{target}')
+        LOGGER.info(f'执行鼠标拖曳，拖曳前位置：{source}，拖曳后位置：{target}')
 
     def close_current_windows(self):
         """关闭当前页面"""
         if self.driver:
             self.driver.close()
-        LOGGER.debug(f'关闭当前页面')
+        LOGGER.info(f'关闭当前页面')
 
     def quit_browser(self):
         """退出所有页面，关闭浏览器"""
         if self.driver:
             self.driver.quit()
-        LOGGER.debug('退出浏览器')
-
-
-DRIVER = DriverBase(driver='Chrome', enable_headless=False, enable_no_picture=False)
+        LOGGER.info('退出浏览器')

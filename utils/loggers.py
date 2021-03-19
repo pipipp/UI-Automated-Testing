@@ -11,7 +11,7 @@ from settings import LOG_CONFIG
 
 class Logger(object):
 
-    def __init__(self, log_file_name, console_output_level='DEBUG', file_output_level='DEBUG',
+    def __init__(self, log_file_name, console_output_level='INFO', file_output_level='INFO',
                  backup_count=5, formatter='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s'):
         """
         日志文件初始化配置

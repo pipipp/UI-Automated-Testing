@@ -6,7 +6,7 @@
 import os
 
 # 项目根目录
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 各模块目录
 MODULE_DIR = {
@@ -19,8 +19,8 @@ MODULE_DIR = {
 # 日志文件配置
 LOG_CONFIG = {
     'formatter': '%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s',
-    'console_output_level': 'DEBUG',
-    'file_output_level': 'DEBUG',
+    'console_output_level': 'INFO',
+    'file_output_level': 'INFO',
     'log_file_name': os.path.join(MODULE_DIR['logs_dir'], f'UI-Test.log'),
     'backup_count': 5,
 }

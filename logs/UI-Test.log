@@ -1,0 +1,6 @@
+2021-03-19 18:57:53,237 - drivers.py[line:39] - INFO: 加载浏览器驱动：Chrome
+2021-03-19 18:57:55,528 - drivers.py[line:192] - INFO: 打开网址：https://www.zhihu.com/
+2021-03-19 18:57:56,539 - drivers.py[line:56] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
+2021-03-19 18:57:57,256 - drivers.py[line:192] - INFO: 打开网址：https://www.zhihu.com/
+2021-03-19 18:57:58,270 - drivers.py[line:56] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
+2021-03-19 18:58:00,736 - drivers.py[line:256] - INFO: 退出浏览器

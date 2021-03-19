@@ -1,0 +1,6 @@
+---
+tests:
+  - username: 12345678
+    password: 123abc
+  - username: 13977776666
+    password: 123AbC

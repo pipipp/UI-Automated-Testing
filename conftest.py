@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-这个函数是在整个测试完成后被调用的
+这个文件会在整个测试完成后被调用
 """
 
 
@@ -11,4 +11,4 @@ def pytest_sessionfinish(session):
     :return:
     """
     with open("{}/allure-results/environment.properties".format(session.config.rootdir), "w") as f:
-        f.write("env=test\ndomain=http://127.0.0.1:8000/")
+        f.write("env=test\nbrowser=Chrome\ndomain=https://www.zhihu.com/")

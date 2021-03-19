@@ -14,7 +14,13 @@ def get_yaml_test_data(filepath):
     :param filepath: 文件路径
     :return:
     """
-    pass
+    result = []
+    with open(filepath) as f:
+        data = yaml.load(f.read(), Loader=yaml.SafeLoader)
+        test = data['tests']
+        for each in test:
+            result.append(each)
+    return result
 
 
 def get_excel_test_data(filepath, sheet_name):
