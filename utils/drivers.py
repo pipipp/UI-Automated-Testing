@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
 """
-POM driver模块，提供driver各种基础用法
+浏览器驱动模块，提供driver各种功能操作
 """
 
+import os
 import time
+import datetime
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -69,6 +71,16 @@ class DriverBase(object):
             raise Exception(error_info)
         return node
 
+    def click_button(self, locator):
+        """
+        点击按钮
+        :param locator:
+        :return:
+        """
+        node = self.find_element(locator)
+        node.click()
+        time.sleep(1)
+
     def send_keys(self, locator, value, directly_enter=False):
         """
         输入信息到文本框
@@ -85,6 +97,7 @@ class DriverBase(object):
         if directly_enter:
             node.send_keys(Keys.ENTER)  # 回车
             LOGGER.info('执行回车')
+        time.sleep(1)
 
     @staticmethod
     def get_node_detail_info(node):
@@ -190,6 +203,7 @@ class DriverBase(object):
         """
         self.driver.get(url)
         LOGGER.info(f'打开网址：{url}')
+        time.sleep(1)
 
     def open_new_windows(self, url=''):
         """
@@ -200,16 +214,17 @@ class DriverBase(object):
         js = "window.open({})".format(url)
         LOGGER.info(f'打开新网址：{url}')
         self.driver.execute_script(js)
-        time.sleep(2)
+        time.sleep(1)
 
-    def page_scrolling(self, go_to_bottom=False, rolling_distance=(0, 1000)):
+    def page_scrolling(self, go_to_bottom=False, rolling_distance=(0, 1000), wait_time=5):
         """
         页面滚动，如果没有滚动效果，添加延时（页面需要全部加载完毕才能滚动）
         :param bool go_to_bottom: 是否直接滚动到当前页面的最底部，默认False
         :param tuple rolling_distance: 滚动距离，默认是向下滚动1000像素
+        :param int wait_time: 滚动前的页面等待时间，默认5秒
         :return:
         """
-        time.sleep(5)
+        time.sleep(wait_time)
         if go_to_bottom:
             js = "window.scrollTo(0, document.body.scrollHeight)"
         else:
@@ -217,14 +232,18 @@ class DriverBase(object):
         self.driver.execute_script(js)
         LOGGER.info(f'页面滚动完毕')
 
-    def screen_shot(self, picture_path='./picture.jpg'):
+    def screen_shot(self, storage_path, picture_name):
         """
         截取当前网页并保存为图片
-        :param picture_path: 保存后的路径
+        :param storage_path: 图片存储的路径
+        :param picture_name: 图片名称
         :return:
         """
-        self.driver.save_screenshot(picture_path)
-        LOGGER.info(f'截取当前页面，图片路径：{picture_path}')
+        current_times = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        storage = os.path.join(storage_path, f'{current_times}_{picture_name}.jpg')
+
+        self.driver.save_screenshot(storage)
+        LOGGER.info(f'截取当前页面，图片保存路径：{storage}')
 
     def action_chain(self, source, target):
         """
@@ -242,6 +261,7 @@ class DriverBase(object):
         self.actions.drag_and_drop(source, target)
         self.actions.perform()
         LOGGER.info(f'执行鼠标拖曳，拖曳前位置：{source}，拖曳后位置：{target}')
+        time.sleep(1)
 
     def close_current_windows(self):
         """关闭当前页面"""
@@ -250,7 +270,7 @@ class DriverBase(object):
         LOGGER.info(f'关闭当前页面')
 
     def quit_browser(self):
-        """退出所有页面，关闭浏览器"""
+        """关闭所有页面，退出浏览器"""
         if self.driver:
             self.driver.quit()
         LOGGER.info('退出浏览器')

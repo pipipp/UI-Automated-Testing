@@ -19,7 +19,7 @@ def get_yaml_test_data(filepath):
         data = yaml.load(f.read(), Loader=yaml.SafeLoader)
         test = data['tests']
         for each in test:
-            result.append(each)
+            result.append(tuple(each.values()))
     return result
 
 

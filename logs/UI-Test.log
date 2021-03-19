@@ -1,6 +1,18 @@
-2021-03-19 18:57:53,237 - drivers.py[line:39] - INFO: 加载浏览器驱动：Chrome
-2021-03-19 18:57:55,528 - drivers.py[line:192] - INFO: 打开网址：https://www.zhihu.com/
-2021-03-19 18:57:56,539 - drivers.py[line:56] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
-2021-03-19 18:57:57,256 - drivers.py[line:192] - INFO: 打开网址：https://www.zhihu.com/
-2021-03-19 18:57:58,270 - drivers.py[line:56] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
-2021-03-19 18:58:00,736 - drivers.py[line:256] - INFO: 退出浏览器
+2021-03-19 19:50:05,250 - drivers.py[line:41] - INFO: 加载浏览器驱动：Chrome
+2021-03-19 19:50:07,341 - drivers.py[line:205] - INFO: 打开网址：https://www.zhihu.com/
+2021-03-19 19:50:08,349 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
+2021-03-19 19:50:09,415 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[2]/div/label/input')
+2021-03-19 19:50:09,542 - drivers.py[line:95] - INFO: 输入值：12345678
+2021-03-19 19:50:10,544 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[3]/div/label/input')
+2021-03-19 19:50:10,639 - drivers.py[line:95] - INFO: 输入值：123abc
+2021-03-19 19:50:11,641 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/button')
+2021-03-19 19:50:13,142 - drivers.py[line:246] - INFO: 截取当前页面，图片保存路径：C:\Evan\my_programs\github_code\projects\UI-Pytest\failure_screenshot\2021-03-19_19-50-12_Demo.jpg
+2021-03-19 19:50:13,688 - drivers.py[line:205] - INFO: 打开网址：https://www.zhihu.com/
+2021-03-19 19:50:14,690 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
+2021-03-19 19:50:15,774 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[2]/div/label/input')
+2021-03-19 19:50:15,876 - drivers.py[line:95] - INFO: 输入值：13977776666
+2021-03-19 19:50:16,890 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[3]/div/label/input')
+2021-03-19 19:50:16,977 - drivers.py[line:95] - INFO: 输入值：123AbC
+2021-03-19 19:50:17,991 - drivers.py[line:58] - INFO: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/button')
+2021-03-19 19:50:19,507 - drivers.py[line:246] - INFO: 截取当前页面，图片保存路径：C:\Evan\my_programs\github_code\projects\UI-Pytest\failure_screenshot\2021-03-19_19-50-19_Demo.jpg
+2021-03-19 19:50:21,944 - drivers.py[line:276] - INFO: 退出浏览器

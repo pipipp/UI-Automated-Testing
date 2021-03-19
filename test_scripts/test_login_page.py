@@ -19,19 +19,29 @@ class TestLoginPage(LoginPage):
 
     def setup_class(self):
         """测试类加载前，执行一次"""
-        self.driver = DriverBase(driver='Chrome', enable_headless=False, enable_no_picture=False)
+        self.browser = DriverBase(driver='Chrome', enable_headless=False, enable_no_picture=False)
 
     def teardown_class(self):
         """测试类加载后，执行一次"""
-        self.driver.quit_browser()
+        self.browser.quit_browser()
+
+    def setup(self):
+        """每个测试方法运行前，执行一次"""
+        pass
+
+    def teardown(self):
+        """每个测试方法运行后，执行一次"""
+        pass
 
     @allure.story('登陆界面测试')
     @pytest.mark.parametrize('username,password', test_data)
     def test_login(self, username, password):
-        self.driver.open_windows(url=self.URL)
-        time.sleep(1)
+        self.browser.open_windows(url=self.URL)
 
-        self.driver.send_keys(locator=self.USERNAME_INPUT, value=username)
-        time.sleep(1)
-        self.driver.send_keys(locator=self.PASSWORD_INPUT, value=password, directly_enter=True)
-        time.sleep(1)
+        self.browser.click_button(self.LOGIN_POSITION)
+
+        self.browser.send_keys(locator=self.USERNAME_INPUT, value=username)
+        self.browser.send_keys(locator=self.PASSWORD_INPUT, value=password)
+        self.browser.click_button(self.LOGIN_BUTTON)
+
+        self.browser.screen_shot(storage_path=MODULE_DIR['failure_screenshot'], picture_name='Demo')
