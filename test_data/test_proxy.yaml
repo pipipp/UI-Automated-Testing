@@ -1,0 +1,28 @@
+---
+tests:
+  - case: 获取proxy接口的所有代理  # 测试用例名称
+    http:  # 请求对象
+      path: proxy/
+      method: GET
+      headers:
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+      params:
+        about: all
+    expected:  # 预期结果
+      response:
+        status: True
+        message: Success
+        data: True
+  - case: 获取proxy接口的有效代理
+    http:
+      path: proxy/
+      method: GET
+      headers:
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+      params:
+        about: valid
+    expected:
+      response:
+        status: True
+        message: Success
+        data: True
