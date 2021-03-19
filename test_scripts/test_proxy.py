@@ -6,7 +6,7 @@ import requests
 
 from utils.tools import get_yaml_test_data
 from utils.allures import add_common_report
-from config.settings import MODULE_DIR
+from settings import MODULE_DIR
 
 # 获取测试数据
 cases, params = get_yaml_test_data(os.path.join(MODULE_DIR['test_data_dir'], 'test_proxy.yaml'))
