@@ -17,23 +17,23 @@ test_data = get_yaml_test_data(os.path.join(MODULE_DIR['test_data_dir'], 'login_
 
 @allure.story('浏览器驱动初始化')
 @pytest.fixture(scope='session')
-def browser_driver():
+def browser():
     """加载浏览器驱动"""
-    browser = DriverBase(driver='Chrome', enable_headless=False, enable_no_picture=False)
-    yield browser
-    browser.quit_browser()
+    driver = DriverBase(driver='Chrome', enable_headless=False, enable_no_picture=False)
+    yield driver
+    driver.quit_browser()
 
 
 @allure.feature('知乎登陆功能')
 class TestLoginPage(LoginPage):
 
     @allure.story('登陆界面测试')
+    @error_screenshot()
     @pytest.mark.parametrize('username,password', test_data)
-    def test_login(self, username, password, browser_driver):
-        browser_driver.open_windows(url=self.URL)
+    def test_login(self, username, password, browser):
+        browser.open_windows(url=self.URL)
 
-        browser_driver.click_button(self.LOGIN_POSITION)
-
-        browser_driver.send_keys(locator=self.USERNAME_INPUT, value=username)
-        browser_driver.send_keys(locator=self.PASSWORD_INPUT, value=password)
-        browser_driver.click_button(self.LOGIN_BUTTON)
+        browser.click_button(self.LOGIN_POSITION)
+        browser.send_keys(locator=self.USERNAME_INPUT, value=username)
+        browser.send_keys(locator=self.PASSWORD_INPUT, value=password)
+        browser.click_button(self.LOGIN_BUTTON)

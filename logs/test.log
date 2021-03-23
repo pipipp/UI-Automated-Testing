@@ -1,0 +1,20 @@
+2021-03-23 11:43:54,942 - drivers.py[line:41] - DEBUG: 加载浏览器驱动：Chrome
+2021-03-23 11:43:54,962 - decorators.py[line:23] - DEBUG: 用例（test_login）执行时间：2021-03-23 11:43:54.962149
+2021-03-23 11:43:57,656 - drivers.py[line:205] - DEBUG: 打开网址：https://www.zhihu.com/
+2021-03-23 11:43:58,660 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
+2021-03-23 11:43:59,755 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[2]/div/label/input')
+2021-03-23 11:43:59,885 - drivers.py[line:95] - DEBUG: 输入值：12345678
+2021-03-23 11:44:00,895 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[3]/div/label/input')
+2021-03-23 11:44:00,996 - drivers.py[line:95] - DEBUG: 输入值：123abc
+2021-03-23 11:44:02,003 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/button')
+2021-03-23 11:44:03,104 - decorators.py[line:34] - DEBUG: 用例（test_login）结束时间：2021-03-23 11:43:54.962149，耗时：8.142658s
+2021-03-23 11:44:03,122 - decorators.py[line:23] - DEBUG: 用例（test_login）执行时间：2021-03-23 11:44:03.122761
+2021-03-23 11:44:03,695 - drivers.py[line:205] - DEBUG: 打开网址：https://www.zhihu.com/
+2021-03-23 11:44:04,704 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')
+2021-03-23 11:44:05,768 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[2]/div/label/input')
+2021-03-23 11:44:05,919 - drivers.py[line:95] - DEBUG: 输入值：13977776666
+2021-03-23 11:44:06,920 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[3]/div/label/input')
+2021-03-23 11:44:07,026 - drivers.py[line:95] - DEBUG: 输入值：123AbC
+2021-03-23 11:44:08,028 - drivers.py[line:58] - DEBUG: 定位元素：('xpath', '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/button')
+2021-03-23 11:44:09,121 - decorators.py[line:34] - DEBUG: 用例（test_login）结束时间：2021-03-23 11:44:03.122761，耗时：5.999071s
+2021-03-23 11:44:11,714 - drivers.py[line:276] - DEBUG: 退出浏览器
