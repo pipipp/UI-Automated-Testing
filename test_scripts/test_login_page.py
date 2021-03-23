@@ -5,8 +5,9 @@ import allure
 import pytest
 
 from utils.drivers import DriverBase
-from pages.login_page import LoginPage
 from utils.tools import get_yaml_test_data
+from utils.decorators import error_screenshot
+from pages.login_page import LoginPage
 from settings import MODULE_DIR
 
 
@@ -14,6 +15,7 @@ from settings import MODULE_DIR
 test_data = get_yaml_test_data(os.path.join(MODULE_DIR['test_data_dir'], 'login_page.yaml'))
 
 
+@allure.story('浏览器驱动初始化')
 @pytest.fixture(scope='session')
 def browser_driver():
     """加载浏览器驱动"""
