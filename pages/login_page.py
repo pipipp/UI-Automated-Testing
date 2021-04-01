@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class LoginPage(object):
 
-    URL = 'https://www.zhihu.com/'
+    URL = 'signin'
 
     # 密码登陆位置
     LOGIN_POSITION = (By.XPATH, '//*[@id="root"]/div/main/div/div/div/div[1]/div/form/div[1]/div[2]')

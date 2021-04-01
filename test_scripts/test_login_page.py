@@ -30,8 +30,8 @@ class TestLoginPage(LoginPage):
     @allure.story('登陆界面测试')
     @error_screenshot()
     @pytest.mark.parametrize('username,password', test_data)
-    def test_login(self, username, password, browser):
-        browser.open_windows(url=self.URL)
+    def test_login(self, env, username, password, browser):
+        browser.open_windows(url=env['host'] + self.URL)
 
         browser.click_button(self.LOGIN_POSITION)
         browser.send_keys(locator=self.USERNAME_INPUT, value=username)
