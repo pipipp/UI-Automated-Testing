@@ -17,27 +17,30 @@ from utils.loggers import LOGGER
 
 class DriverBase(object):
 
-    def __init__(self, driver='Chrome', enable_headless=False, enable_no_picture=False):
+    def __init__(self, driver='Chrome', enable_headless=False, enable_no_picture=False, enable_maximize_window=False):
         """
         Browser driver初始化
         :param driver: 浏览器驱动
         :param enable_headless: 是否启动无界面模式，默认False
         :param enable_no_picture: 是否不加载图片，加快访问速度，默认False
+        :param enable_maximize_window: 是否最大化窗口，默认False
         """
         # 浏览器选项配置
-        chrome_options = webdriver.ChromeOptions()
+        options = webdriver.ChromeOptions()
         if enable_headless:
-            chrome_options.add_argument('--headless')
+            options.add_argument('--headless')
         if enable_no_picture:
-            chrome_options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
+            options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
+        if enable_maximize_window:
+            options.add_argument("--start-maximized")
 
         # 选择浏览器驱动
         if driver == 'Firefox':
-            self.driver = webdriver.Firefox(options=chrome_options)
+            self.driver = webdriver.Firefox(options=options)
         elif driver == 'Ie':
-            self.driver = webdriver.Ie(options=chrome_options)
+            self.driver = webdriver.Ie(options=options)
         else:
-            self.driver = webdriver.Chrome(options=chrome_options)
+            self.driver = webdriver.Chrome(options=options)
         LOGGER.debug(f'加载浏览器驱动：{driver}')
 
         self.waiting = WebDriverWait(self.driver, 30)  # 设置显示等待30秒
