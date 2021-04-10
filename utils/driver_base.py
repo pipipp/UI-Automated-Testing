@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-浏览器驱动模块，提供driver各种操作方法
+浏览器驱动底层模块，封装Selenium各种原生API方法
 """
 
 import os
@@ -8,7 +8,6 @@ import time
 import datetime
 
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait

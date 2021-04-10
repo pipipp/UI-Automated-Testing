@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-Hook fixture 通用模块
+Hook fixture 公共模块
 
 conftest.py是一个plugin文件（固定名称）：
     里面可以实现Pytest提供的Hook函数或者自定义的fixture函数
@@ -12,6 +12,8 @@ request.config.rootdir属性：
 import os
 import yaml
 import pytest
+
+from utils.common_drivers import Drivers
 
 
 def pytest_addoption(parser):
@@ -37,3 +39,11 @@ def env(request):
     with open(config_path) as f:
         env_config = yaml.load(f.read(), Loader=yaml.SafeLoader)
     return env_config
+
+
+@pytest.fixture(scope='session')
+def browser():
+    """加载浏览器驱动"""
+    driver = Drivers(driver='Chrome', enable_maximize_window=True)
+    yield driver
+    driver.quit_browser()
