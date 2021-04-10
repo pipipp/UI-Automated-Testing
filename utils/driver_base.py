@@ -42,7 +42,7 @@ class DriverBase(object):
             self.driver = webdriver.Chrome(options=options)
         LOGGER.debug(f'加载浏览器驱动：{driver}')
 
-        self.waiting = WebDriverWait(self.driver, 30)  # 设置显示等待30秒
+        self.wait = WebDriverWait(self.driver, 30)  # 设置显示等待30秒
         self.driver.implicitly_wait(30)  # 设置隐示等待30秒
         self.actions = webdriver.ActionChains(self.driver)  # 动作链初始化
 
@@ -59,9 +59,9 @@ class DriverBase(object):
             try:
                 LOGGER.debug(f'定位元素：{locator}')
                 if condition == 'visibility':  # 等待节点可见
-                    node = self.waiting.until(EC.visibility_of_element_located(locator))
+                    node = self.wait.until(EC.visibility_of_element_located(locator))
                 else:  # 等待节点加载出来
-                    node = self.waiting.until(EC.presence_of_element_located(locator))
+                    node = self.wait.until(EC.presence_of_element_located(locator))
                 break
             except Exception as ex:
                 error_info = f'定位 {locator} 失败，错误信息：{ex}'
