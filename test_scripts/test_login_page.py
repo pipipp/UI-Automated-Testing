@@ -14,7 +14,7 @@ from settings import MODULE_DIR
 test_data = get_yaml_test_data(os.path.join(MODULE_DIR['test_data_dir'], 'login_page.yaml'))
 
 
-@allure.feature('知乎登陆功能')
+@allure.feature('知乎网')
 class TestLoginPage(LoginPage):
 
     @allure.story('登陆界面测试')
