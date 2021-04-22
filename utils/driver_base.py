@@ -102,6 +102,31 @@ class DriverBase(object):
             LOGGER.debug('执行回车')
         time.sleep(1)
 
+    def popup_window_operation(self, action='yes', send_info='', get_window_info=False):
+        """
+        弹窗操作
+        :param action: 要执行的动作，yes or no
+        :param send_info: 在弹窗的文本框内输入信息
+        :param get_window_info: 获取弹窗的文本信息
+        :return:
+        """
+        if send_info:
+            LOGGER.debug(f'在弹窗上输入信息：{send_info}')
+            self.driver.switch_to.alert.send_keys(send_info)
+
+        if get_window_info:
+            popup_info = self.driver.switch_to.alert.text
+            LOGGER.debug(f'获取弹窗的文本信息：{popup_info}')
+            return popup_info
+
+        if action == 'yes':
+            LOGGER.debug('在弹窗上点击确认')
+            self.driver.switch_to.alert.accept()  # 点击确认
+        else:
+            LOGGER.debug('在弹窗上点击取消')
+            self.driver.switch_to.alert.dismiss()  # 点击取消
+        time.sleep(1)
+
     @staticmethod
     def get_node_detail_info(node):
         """
