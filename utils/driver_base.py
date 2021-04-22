@@ -193,19 +193,22 @@ class DriverBase(object):
 
     def switch_to_windows(self, to_parent_windows=False):
         """
-        切换到不同的windows窗口
+        切换到不同的浏览器窗口
         :param to_parent_windows: 是否回到主窗口，默认False
         :return:
         """
         total = self.driver.window_handles
+        LOGGER.debug(f'浏览器所有窗口；{total}')
+
         if to_parent_windows:
+            LOGGER.debug(f'切换到第一个窗口')
             self.driver.switch_to.window(total[0])
         else:
             current_windows = self.driver.current_window_handle
             for window in total:
                 if window != current_windows:
+                    LOGGER.debug(f'切换浏览器窗口')
                     self.driver.switch_to.window(window)
-        LOGGER.debug(f'切换windows窗口')
 
     def switch_to_frame(self, index=0, to_parent_frame=False, to_default_frame=False):
         """
