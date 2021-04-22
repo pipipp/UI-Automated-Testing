@@ -80,6 +80,7 @@ class DriverBase(object):
         :return:
         """
         node = self.find_element(locator)
+        LOGGER.debug('点击按钮')
         node.click()
         time.sleep(1)
 
