@@ -46,7 +46,7 @@ class DriverBase(object):
         self.driver.implicitly_wait(30)  # 设置隐示等待30秒
         self.actions = webdriver.ActionChains(self.driver)  # 动作链初始化
 
-    def find_element(self, locator, condition='presence', retries=1):
+    def find_element(self, locator, condition='visibility', retries=1):
         """
         通过等待条件定位元素
         :param locator: 定义元组。例：(By.ID, '//*[@id="kw"]')
@@ -58,10 +58,10 @@ class DriverBase(object):
         for times in range(retries + 1):
             try:
                 LOGGER.debug(f'定位元素：{locator}')
-                if condition == 'visibility':  # 等待节点可见
-                    node = self.wait.until(EC.visibility_of_element_located(locator))
-                else:  # 等待节点加载出来
+                if condition == 'presence':  # 等待节点加载出来
                     node = self.wait.until(EC.presence_of_element_located(locator))
+                else:   # 等待节点可见
+                    node = self.wait.until(EC.visibility_of_element_located(locator))
                 break
             except Exception as ex:
                 error_info = f'定位 {locator} 失败，错误信息：{ex}'
